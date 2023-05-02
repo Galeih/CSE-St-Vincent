@@ -1,0 +1,335 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', flex sans-serif;
+    content: " ";
+}
+h1 {
+    font-weight: 400;
+}
+a {
+    text-decoration: none;
+}
+a:hover {
+    color: inherit;
+}
+
+.chevron {
+    max-width: 14px;
+    max-height: 14px;
+}
+
+.active {
+    background-color: #a39677;
+}
+
+/* Main */
+main {
+    display: flex;
+    margin: 0 7%;
+}
+ /* Header  */
+header {
+    background-color: #efeded;
+}
+
+nav {
+    margin: 0 0 0 7%;
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+}
+
+nav .logo {
+    position: absolute;
+    background-color: white;
+    top: 0;
+    padding: 13px;
+    display: block;
+}
+nav .logo img{
+    max-width: 210px;
+}
+
+.light-gray {
+    height: 60px;
+    background-color: #cccccc;
+}
+
+.blue {
+    background-color: #1b3168;
+    height: 60px;
+}
+
+.blue ul {
+    display: flex;
+    list-style: none;
+    position: sticky;
+    margin: 0 0 0 234px;
+    color: white;
+    transition: color 0.1s ease-in-out;
+}
+
+.blue ul li {
+    padding: 21px 35px;
+    max-height: 60px;
+    color: white;
+}
+
+.blue ul :hover {
+    background-color: #a39677;
+}
+
+aside {
+    padding: 10px;
+    max-width: 250px;
+}
+
+aside.left div {
+    padding-bottom: 10px;
+}
+aside.left .access-title {
+    font-size: 19px;
+    padding-bottom: 17px;
+    color: #a39677;
+}
+aside.left .home {
+    display: flex;
+    align-items: center;
+    padding: 30px 5px;
+}
+aside.left .home img {
+    width: 22px;
+}
+aside.left .home img:nth-child(2) {
+    width: 14px;
+    padding-right: 3px;
+}
+aside.left .home .access-title {
+    padding-bottom: 0;
+}
+aside.left .chevron {
+    width: 12px;
+}
+aside.left .infocontact div {
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+}
+aside.left .infocontact div:last-child {
+    display: flex;
+    align-items: baseline;
+}
+aside.left .infocontact div p span {
+    color: #1b3168;
+}
+aside.left .partenaire .prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+aside.left .partenaire .dot {
+    cursor: pointer;
+    height: 12px;
+    width: 12px;
+    margin: 0 2px;
+    background-color: #C4C4C4;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+aside.left .decouverte {
+    display: flex;
+    justify-content: center;
+}
+aside.left .decouverte a {
+    font-size: 14px;
+    text-decoration: underline;
+    text-align: center;
+    color: #000000;
+}
+aside.left a {
+    transition: opacity 0.3s ease;
+}
+
+.offreaccess a:hover,
+.contactaccess a:hover,
+.tel a:hover,
+.email a:hover,
+.place a:hover,
+.decouverte a:hover {
+    opacity: 0.6;
+}
+
+/*  #### ACCUEIL ####  */
+
+.right {
+    padding: 10px;
+}
+
+.info_accueil {
+    margin: 5vh 0 3vh;
+    padding: 10px;
+    background-color: #D9D9D9;
+}
+.info_accueil p {
+    padding: 10px;
+}
+
+.titre {
+    padding: 5px;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    color: #1B3168;
+}
+
+/* Offre */
+
+.offre_billetterie {
+    margin-top: 3vh;
+    padding: 15px;
+    background-color: #fafafa;
+
+}
+.offre_billetterie_header {
+    padding-bottom: 15px;
+    background-color: #fafafa;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.tag_offre {
+    display: inline-block;
+    max-width: 146px;
+    width: 100%;
+    height: 22px;
+    padding: 5px;
+    color: #fafafa;
+    background-color: #1B3168;
+    border-radius: 7px;
+    font-weight: 400;
+    font-size: 10px;
+    text-align: center;
+}
+
+.date_offre {
+    padding-left: 5px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.offre_learnmore {
+    width: fit-content;
+    display: block;
+    text-align: end;
+    text-decoration: none;
+    color: black;
+    transition: all 0.2s ease-in-out;
+    left: 100%;
+    position: sticky;
+    margin-top: 10px;
+    text-decoration: none !important;
+}
+.offre_learnmore:hover {
+    color: #a39677;
+    scale: 1.05;
+}
+
+#offres_decouvrir {
+    margin-top: 3vh;
+    height: 35px;
+    display: inline-block;
+    padding: 5px 20px;
+    color: #fafafa;
+    background-color: #1B3168;
+    border-radius: 7px;
+    text-align: center;
+    transition: all 0.1s ease-in-out;
+}
+#offres_decouvrir:hover {
+    scale: 1.03;
+    opacity: 0.9;
+}
+
+/* Partenariats */
+
+.partenaire-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 20px;
+    width: 60vw;
+    height: auto;
+    margin-top: 3vh;
+    padding: 15px;
+    background-color: #EFEDED;
+}
+.partenaire-item {
+    width: 150px;
+    height: 150px;
+    color: red;
+    text-align: center;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+.partenaire-item img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    gap: 10px;
+}
+.pagination span {
+    height: 55px;
+    width: 55px;
+    color: #fafafa;
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.pagination span:hover {
+    opacity: 0.7;
+    transition: all 0.5s ease-out;
+}
+
+.page {
+    background-color: #1B3168;
+    border: #1B3168 solid 2px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.activepage {
+    border: #a39677 solid 3px !important;
+}
+
+.etc {
+    color: rgba(0, 0, 0, 0.674) !important;
+    align-items: end;
+    justify-content: center;
+    display: flex;
+    font-weight: 900;
+    font-size: 35px;
+    letter-spacing: 2px;
+    cursor: default !important;
+    opacity: 1 !important;
+}
+
+/* Billetterie */
+
+.right {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
