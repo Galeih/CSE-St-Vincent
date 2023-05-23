@@ -88,7 +88,7 @@ $tab = $select->fetchAll();
                     $datedeb = $offre['Date_Debut_Offre'];
                     $datefin = $offre['Date_Fin_Offre'];
 
-                    $datedeb_formattee = strftime("%d %B %Y", strtotime($datedeb));
+                    $datedeb_formattee = date("%d %B %Y", strtotime($datedeb));
                     $datedeb_formattee = explode(" ", $datedeb_formattee);
                     for ($i = 0; $i < count($monthsEnglish); $i++) {
                         if ($datedeb_formattee[1] == $monthsEnglish[$i]) {
@@ -97,7 +97,7 @@ $tab = $select->fetchAll();
                     }
                     $datedeb_formattee = implode(" ", $datedeb_formattee);
 
-                    $datefin_formattee = strftime("%d %B %Y", strtotime($datefin));
+                    $datefin_formattee = date("%d %B %Y", strtotime($datefin));
                     $datefin_formattee = explode(" ", $datefin_formattee);
                     for ($i = 0; $i < count($monthsEnglish); $i++) {
                         if ($datefin_formattee[1] == $monthsEnglish[$i]) {
