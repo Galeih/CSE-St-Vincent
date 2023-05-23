@@ -1,38 +1,40 @@
 <?php 
  require 'include/connectionbdd.php';
- //Récupération des données de Téléphone
+
+// Récupération du numéro de téléphone
 $tel = $connexion -> prepare('SELECT Num_TEL_Info_Accueil FROM info_accueil');
 $tel ->execute();
-$phone = $tel->fetch();
+$phone = $tel -> fetch();
 $phone = $phone['Num_TEL_Info_Accueil'];
-//Récpération des données de l'email
+// Récupération de l'email
 $email = $connexion -> prepare('SELECT Email_Info_Accueil FROM info_accueil');
-$email ->execute();
-$adresseEmail = $email->fetch();
+$email -> execute();
+$adresseEmail = $email -> fetch();
 $adresseEmail = $adresseEmail['Email_Info_Accueil'];
-//Récupération des données de l'emplacement du bureau du CSE
+// Récupération de l'emplacement du bureau du CSE
 $place = $connexion -> prepare('SELECT Emplacement_Bureau_Info_Accueil FROM info_accueil');
-$place ->execute();
-$office = $place->fetch();
+$place -> execute();
+$office = $place -> fetch();
 $office = $office['Emplacement_Bureau_Info_Accueil'];
+
 //Images partenaires
-$imgPart = $connexion -> prepare("SELECT DISTINCT * FROM image ORDER BY RAND() LIMIT 3");
+$imgPart = $connexion -> prepare("SELECT DISTINCT * FROM images ORDER BY RAND() LIMIT 3");
 $imgPart -> execute();
-$nomImg = $imgPart->fetchAll();
+$nomImg = $imgPart -> fetchAll();
 //Récupération des données du Titre de la page d'accueil
 $titreInfoAccueil = $connexion -> prepare('SELECT Titre_Info_Accueil FROM info_accueil');
-$titreInfoAccueil ->execute();
-$TitreAccueil = $titreInfoAccueil->fetch();
+$titreInfoAccueil -> execute();
+$TitreAccueil = $titreInfoAccueil -> fetch();
 $TitreAccueil = $TitreAccueil['Titre_Info_Accueil'];
 //Récupération des données de la description de la page d'accueil
 $texteInfoAccueil = $connexion -> prepare('SELECT Texte_Info_Accueil FROM info_accueil');
-$texteInfoAccueil ->execute();
-$TexteAccueil = $texteInfoAccueil->fetch();
+$texteInfoAccueil -> execute();
+$TexteAccueil = $texteInfoAccueil -> fetch();
 $TexteAccueil = $TexteAccueil['Texte_Info_Accueil'];
 //Images partenaires
 $offres = $connexion -> prepare("SELECT DISTINCT * FROM offre ORDER BY Id_Offre DESC LIMIT 3");
 $offres -> execute();
-$chaqueOffre = $offres->fetchAll();
+$chaqueOffre = $offres -> fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -49,8 +51,7 @@ $chaqueOffre = $offres->fetchAll();
 </head>
 <body>
     <header>
-        <div class="gris">
-        </div>
+        <div class="gris"></div>
         <div class="blue">
             <nav>
                 <div class="logo"><img src="assets/logo_lycee.png" alt="logo_st_vincent"></div>
@@ -76,29 +77,33 @@ $chaqueOffre = $offres->fetchAll();
     </header>
     <main>
         <?php require 'include/aside.php'?>
+
         <div class="right">
             <div class="info_accueil">
-                <h2 class="titre"><?=$TitreAccueil?></h2>
+                <h2 class="title"><?=$TitreAccueil?></h2>
                 <p><?=$TexteAccueil?></p>
                 <p>Découvrez l'équipe et le rôle et missions de votre CSE.</p>
             </div>
             <h1>Dernières offres de la Billetterie</h1>
             <?php foreach($chaqueOffre as $offre ){?>
+
             <div class="offre_billetterie">
                 <div class="offre_billetterie_header">
                     <span class="tag_offre">OFFRE</span>
                     <span class="date_offre">Publié le <?php echo date('d F Y',strtotime($offre['Date_Debut_Offre']))?></span>
                 </div>
-                <p><?=$offre['Desc-Offre']?></p>
+                <p><?=$offre['Description_Offre']?></p>
                     <span class="offre_learnmore"><a target="blank" href="billetterie.php">EN SAVOIR PLUS <img class="chevron"
                             src="assets/chevron-droit.png" alt="chevron"> </a></span>
             </div>
+
                 <?php } ?>
             <a target="_blank" href="billetterie.php">
                 <span id="offres_decouvrir">Découvrir toutes nos offres 〉</span>
             </a>
         </div>
     </main>
+
     <?php require 'include/footer.php'?>
     </body>
 </html>

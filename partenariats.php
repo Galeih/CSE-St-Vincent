@@ -77,6 +77,7 @@ $idPartenaire = $req->fetchAll();
     
     <?php
     // Modale pour selectionner le partenaire
+    
     if (isset($_GET['modalpartenaire'])) {
         $req = $connexion->prepare("SELECT * FROM partenaire WHERE Id_Partenaire = :id");
         $req->bindParam('id', $_GET['modalpartenaire']);
@@ -96,7 +97,7 @@ $idPartenaire = $req->fetchAll();
                     <div class="imagePartenaire">
                         <img class="imagePartenaire" src="assets/<?php echo $imagepartenaire['Nom_Image'] ?>" alt="Image du partenaire">
                     </div>
-                    <p><?= $partenaire['Desc-Partenaire'] ?></p>
+                    <p><?= $partenaire['Description_Partenaire'] ?></p>
                     <a target="_blank" href="<?= $partenaire['Lien_Partenaire'] ?>"><div id="offres_decouvrir">Voir Site du Partenaire</div></a>
                 </div>
             </div>

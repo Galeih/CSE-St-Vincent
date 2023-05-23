@@ -9,7 +9,7 @@ $file = $parts[count($parts) - 1];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="include/footer.css">
 </head>
 <body>
 <footer>
@@ -26,7 +26,7 @@ $file = $parts[count($parts) - 1];
         <!-- Définit les liens des pages du footer -->
             <ul class="links_list_footer">
 
-                <?php if($file=='base.php'){?>
+                <?php if($file=='index.php'){?>
                 <a href="partenariats.php">>Partenariats</a>
                 <a href="billetterie.php">>Billetterie</a>
                 <a href="contact.php">>Contact</a>
