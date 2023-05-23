@@ -333,3 +333,53 @@ aside.left a {
     flex-direction: column;
     width: 100%;
 }
+
+
+/*back partenaire*/
+
+.imgpartview
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 30%;
+    padding: 10px 0 10px 0;
+}
+
+.upPart
+{
+    background-color: green;
+    color: #ffffff;
+    border-radius: 12%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 10px 0 10px 0; 
+}
+
+.delPart
+{
+    background-color: red;
+    color: #ffffff;
+    border-radius: 12%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 10px 0 10px 0;
+}
+
+.adPart
+{
+    background-color: #1B3168;
+    color: #ffffff;
+    border-radius: 8%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 10%;
+    padding: 10px 0 10px 0;
+}
