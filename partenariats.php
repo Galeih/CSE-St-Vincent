@@ -58,7 +58,7 @@ $idPartenaire = $req->fetchAll();
                 foreach ($nomImgPartenaire as $index => $image) {
                     $test = $idPartenaire[$index];
                 ?>
-                    <div class="partenaire-item"><a href="partenariats.php?modalpartenaire=<?= $test['Id_Partenaire'] ?>"><img src="assets/<?= $image['Nom_Image'] ?>" alt="Image du partenaire"></a></div>
+                    <div class="partenaire-item"><a href="DescPartenaire.php?modalpartenaire=<?= $test['Id_Partenaire'] ?>"><img src="assets/<?= $image['Nom_Image'] ?>" alt="Image du partenaire"></a></div>
                 <?php } ?>
             </div>
             <div class="pagination">
@@ -74,33 +74,5 @@ $idPartenaire = $req->fetchAll();
     </main>
 
     <?php require 'include/footer.php' ?>
-    
-    <?php
-    // Modale pour selectionner le partenaire
-    if (isset($_GET['modalpartenaire'])) {
-        $req = $connexion->prepare("SELECT * FROM partenaire WHERE Id_Partenaire = :id");
-        $req->bindParam('id', $_GET['modalpartenaire']);
-        $req->execute();
-        $partenaire = $req->fetch();
-        $reqImage = $connexion->prepare("SELECT Nom_Image FROM images WHERE Id_Image = :id");
-        $reqImage->bindParam('id', $partenaire['Id_Image']);
-        $reqImage->execute();
-        $imagepartenaire = $reqImage->fetch();
-    ?>
-
-        <div id="modalupdatepart" class="modal">
-            <div class="modal-content">
-                <span class="closeModif">&times;</span>
-                <div class="formBox">
-                    <h1 style="margin-bottom:20px;"><?= $partenaire['Nom_Partenaire'] ?></h1>
-                    <div class="imagePartenaire">
-                        <img class="imagePartenaire" src="assets/<?php echo $imagepartenaire['Nom_Image'] ?>" alt="Image du partenaire">
-                    </div>
-                    <p><?= $partenaire['Desc-Partenaire'] ?></p>
-                    <a target="_blank" href="<?= $partenaire['Lien_Partenaire'] ?>"><div id="offres_decouvrir">Voir Site du Partenaire</div></a>
-                </div>
-            </div>
-        </div>
-    <?php } ?>
     </body>
 </html>
