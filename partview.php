@@ -1,7 +1,6 @@
 <?php
 require 'include/connectionbdd.php';
 
-
 $req = $connexion->prepare("SELECT * FROM partenaire");
 $req->execute();
 $Partenaire = $req->fetchAll();

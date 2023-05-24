@@ -9,12 +9,13 @@ $tcount = $count->fetchAll();
 $nb_elements_par_page = 5;
 $pages = ceil($tcount[0]['infos'] / $nb_elements_par_page);
 @$page = $_GET["page"];
-// Verif validité 
+
 if (empty($page)) {
     $page = 1;
 }
+
 $page = max(1, min($pages, $page));
-// Verif Si contenu offre renvoie une valeur de page 
+
 if (isset($_GET["anciennepage"])) {
     try {
         $valeur = intval($_GET["anciennepage"]);
@@ -25,16 +26,16 @@ if (isset($_GET["anciennepage"])) {
         $page = 1;
     }
 }
+
 if ($page === 0) {
     $page = 1;
 }
-$debut = ($page - 1) * $nb_elements_par_page;
 
+$debut = ($page - 1) * $nb_elements_par_page;
 $select = $connexion->prepare("SELECT * FROM offre ORDER BY Date_Debut_Offre desc LIMIT $debut, $nb_elements_par_page ");
 $select->setFetchMode(PDO::FETCH_ASSOC);
 $select->execute();
 $tab = $select->fetchAll();
-
 ?>
 
 <!DOCTYPE html>
@@ -52,6 +53,7 @@ $tab = $select->fetchAll();
     <title>CSE Saint-Vincent - Billetterie</title>
 </head>
 <body>
+
     <header>
         <div class="light-gray"></div>
         <div class="blue">
@@ -76,9 +78,10 @@ $tab = $select->fetchAll();
             </nav>
         </div>
     </header>
+
     <main>
         <?php require 'include/aside.php' ?>
-        <div class="right_billetterie">
+        <div class="right">
             <h1>Toutes nos offres</h1>
 
             <?php foreach ($tab as $offre) {
@@ -118,9 +121,12 @@ $tab = $select->fetchAll();
                 <?php }
                 } ?>
             </div>
+
         </div>
     </main> 
+
     <?php require 'include/footer.php'?>
+
 </body>
 
 </html>
