@@ -102,10 +102,10 @@ $listDePartenaire = $listDePartenaire->fetchAll();
                         <li>Partenariats</li>
                     </a>
                     <a href="billetterie.php">
-                        <li class="active">Billetterie</li>
+                        <li>Billetterie</li>
                     </a>
                     <a href="contact.php">
-                        <li>Contact</li>
+                        <li class="active">Contact</li>
                     </a>
                 </ul>
             </nav>
