@@ -83,7 +83,7 @@ if (empty($_GET) === false) {
                     <div class="logo"><img src="assets/logo_st_vincent_1.png" alt="logo_st_vincent"></div>
                     <ul>
                     <a href="back.php">
-                            <li>
+                            <li class="active">
                                 Back-Accueil
                             </li>
                         </a>
@@ -93,7 +93,7 @@ if (empty($_GET) === false) {
                             </li>
                         </a>
                         <a href="billetterieview.php">
-                            <li class="active">
+                            <li>
                                 Back-Billetterie
                             </li>
                         </a>
