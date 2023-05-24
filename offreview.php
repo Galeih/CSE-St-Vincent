@@ -1,9 +1,9 @@
 <?php
 require 'include/connectionbdd.php';
 
-$req = $connexion->prepare("SELECT * FROM partenaire");
+$req = $connexion->prepare("SELECT * FROM offre");
 $req->execute();
-$Partenaire = $req->fetchAll();
+$Billetterie = $req->fetchAll();
 
 ?>
 
@@ -18,7 +18,7 @@ $Partenaire = $req->fetchAll();
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link  rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap">
         <link rel="icon" href="assets/sv_logo.png">
-        <title>CSE Saint-Vincent - Back - Partenariats</title>
+        <title>CSE Saint-Vincent - Back - Billetterie</title>
     </head>
     <body>
         <header>
@@ -54,39 +54,38 @@ $Partenaire = $req->fetchAll();
         <table style="margin: 60px;">
             <thead>
                 <tr>
-                    <th style="width: 10%;border: black solid 5px;">Nom partenaire</th>	
-                    <th style="width: 30%;border: black solid 5px;">Description partenaire</th>		
-                    <th style="border: black solid 5px;">Lien site partenaire</th>
-                    <th style="width: 20%;border: black solid 5px;">Image</th>
-                    <th style="width: 10%;border: black solid 5px;">Modifier partenaire</th>
-                    <th style="width: 10%;border: black solid 5px;">Supprimer partenaire</th>
+                    <th style="width: 10%;border: black solid 5px;">Nom offre</th>	
+                    <th style="width: 30%;border: black solid 5px;">Description offre</th>		
+                    <th style="border: black solid 5px;">Date début offre</th>
+                    <th style="border: black solid 5px;">Date fin offre</th>
+                    <th style="border: black solid 5px;">Nombre places offre</th>
+                    <th style="width: 10%;border: black solid 5px;">Modifier offre</th>
+                    <th style="width: 10%;border: black solid 5px;">Supprimer offre</th>
                 </tr>
             </thead>
             <tbody>
-            <?php
-                foreach ($Partenaire as $part) {
-                    $imagepartenaire = $connexion->prepare("SELECT Nom_Image FROM images WHERE Id_Image = :id");
-                    $imagepartenaire->bindParam("id",$part['Id_Image']);
-                    $imagepartenaire->execute();
-                    $nomImgPartenaire = $imagepartenaire->fetch();
-                ?>
+            <?php foreach ($Billetterie as $offer) {?>
+                
                 <tr style="text-align: justify; width: 130px;">
-                    <td><p class="partform"><?= $part['Nom_Partenaire'] ?></p></td>
-                    <td><p style="padding: 10px;"><?= $part['Description_Partenaire'] ?></p></td>
-                    <td><a class="imgpartview" href="<?= $part['Lien_Partenaire'] ?>"><?= $part['Lien_Partenaire'] ?></a></td>
-                    <td><img class="imgpartview" src="assets/<?= $nomImgPartenaire['Nom_Image'] ?>"></td>
+                    <td><p class="partform"><?= $offer['Nom_Offre'] ?></p></td>
+                    <td><p style="padding: 10px;"><?= $offer['Description_Offre'] ?></p></td>
+                    <td><p><?= $offer['Date_Debut_Offre'] ?></p></td>
+                    <td><p><?= $offer['Date_Fin_Offre'] ?></p></td>
+                    <td><p><?= $offer['Nombre_Place_Min_Offre'] ?></p></td>
+
                     <td>
-                        <a class="upPart" href="updatepart.php?id=<?= $part['Id_Partenaire'] ?>">modifier</a>
+                        <a class="upPart" href="updatebillet.php?id=<?= $offer['Id_Offre'] ?>">modifier</a>
                     </td>
                     <td>
-                        <a class="delPart" href="Delpartenaire.php?id=<?= $part['Id_Partenaire'] ?>">supprimer</a>
+                        <a class="delPart" href="Delpartenaire.php?id=<?= $offer['Id_Offre'] ?>">supprimer</a>
                     </td>
+
                 </tr>
                     <?php } ?>
             </tbody>
         </table>
         <div style="display: flex; justify-content: center; padding: 10px;">
-            <a class="adPart" href="partajt.php" style="padding: 10px; border-radius: 10px;">Ajouter partenaire</a>
+            <a class="adPart" href="offreajt.php" style="padding: 10px; border-radius: 10px;">Ajouter offre</a>
         </div>
     </body>
 </html>
