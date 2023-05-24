@@ -17,21 +17,22 @@ $place -> execute();
 $office = $place -> fetch();
 $office = $office['Emplacement_Bureau_Info_Accueil'];
 
-//Images partenaires
+// Images partenaires
 $imgPart = $connexion -> prepare("SELECT DISTINCT * FROM images ORDER BY RAND() LIMIT 3");
 $imgPart -> execute();
 $nomImg = $imgPart -> fetchAll();
-//Récupération des données du Titre de la page d'accueil
+
+// Récupération du Titre de la page d'accueil
 $titreInfoAccueil = $connexion -> prepare('SELECT Titre_Info_Accueil FROM info_accueil');
 $titreInfoAccueil -> execute();
 $TitreAccueil = $titreInfoAccueil -> fetch();
 $TitreAccueil = $TitreAccueil['Titre_Info_Accueil'];
-//Récupération des données de la description de la page d'accueil
+// Récupération de la description de la page d'accueil
 $texteInfoAccueil = $connexion -> prepare('SELECT Texte_Info_Accueil FROM info_accueil');
 $texteInfoAccueil -> execute();
 $TexteAccueil = $texteInfoAccueil -> fetch();
 $TexteAccueil = $TexteAccueil['Texte_Info_Accueil'];
-//Images partenaires
+// Images partenaires
 $offres = $connexion -> prepare("SELECT DISTINCT * FROM offre ORDER BY Id_Offre DESC LIMIT 3");
 $offres -> execute();
 $chaqueOffre = $offres -> fetchAll();
@@ -51,10 +52,10 @@ $chaqueOffre = $offres -> fetchAll();
 </head>
 <body>
     <header>
-        <div class="gris"></div>
+        <div class="light-gray"></div>
         <div class="blue">
             <nav>
-                <div class="logo"><img src="assets/logo_lycee.png" alt="logo_st_vincent"></div>
+                <div class="logo"><img src="assets/logo_st_vincent_1.png" alt="logo_st_vincent"></div>
                 <ul>
                     <a href="index.php">
                         <li class="active">
@@ -76,6 +77,7 @@ $chaqueOffre = $offres -> fetchAll();
         </div>
     </header>
     <main>
+
         <?php require 'include/aside.php'?>
 
         <div class="right">
@@ -85,21 +87,24 @@ $chaqueOffre = $offres -> fetchAll();
                 <p>Découvrez l'équipe et le rôle et missions de votre CSE.</p>
             </div>
             <h1>Dernières offres de la Billetterie</h1>
+            
             <?php foreach($chaqueOffre as $offre ){?>
-
             <div class="offre_billetterie">
                 <div class="offre_billetterie_header">
                     <span class="tag_offre">OFFRE</span>
                     <span class="date_offre">Publié le <?php echo date('d F Y',strtotime($offre['Date_Debut_Offre']))?></span>
                 </div>
                 <p><?=$offre['Description_Offre']?></p>
-                    <span class="offre_learnmore"><a target="blank" href="billetterie.php">EN SAVOIR PLUS <img class="chevron"
-                            src="assets/chevron-droit.png" alt="chevron"> </a></span>
+                    <span class="offre_learnmore">
+                        <a target="blank" href="billetterie.php">EN SAVOIR PLUS
+                            <img class="chevron" src="assets/chevron-droit.png" alt="chevron">
+                        </a>
+                    </span>
             </div>
+            <?php } ?>
 
-                <?php } ?>
             <a target="_blank" href="billetterie.php">
-                <span id="offres_decouvrir">Découvrir toutes nos offres 〉</span>
+                <span id="offres_decouvrir">Découvrir toutes nos offres</span>
             </a>
         </div>
     </main>

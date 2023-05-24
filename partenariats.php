@@ -1,12 +1,54 @@
 <?php
 require 'include/connectionbdd.php';
-// Selectionne toutes les images et le nom des partenaires
-$imagepartenaire = $connexion->prepare("SELECT Nom_Image FROM images WHERE Id_Image in (SELECT Id_Image FROM partenaire)");
-$imagepartenaire->execute();
-$nomImgPartenaire = $imagepartenaire->fetchAll();
+
 $req = $connexion->prepare("SELECT Id_Partenaire FROM partenaire");
 $req->execute();
 $idPartenaire = $req->fetchAll();
+
+
+$count = $connexion->prepare("SELECT COUNT(Id_Partenaire) as parten FROM partenaire");
+$count->setFetchMode(PDO::FETCH_ASSOC);
+$count->execute();
+$tcount = $count->fetchAll();
+
+$nb_elements_par_page = 8 ;
+$pages = ceil($tcount[0]['parten'] / $nb_elements_par_page);
+@$page = $_GET["page"];
+// Verif validité 
+if (empty($page)) {
+    $page = 1;
+}
+$page = max(1, min($pages, $page));
+// Verif Si contenu offre renvoie une valeur de page 
+if (isset($_GET["anciennepage"])) {
+    try {
+        $valeur = intval($_GET["anciennepage"]);
+        if (gettype($valeur == "integer")) {
+            $page = $valeur;
+        }
+    } catch (Exception $e) {
+        $page = 1;
+    }
+}
+if ($page === 0) {
+    $page = 1;
+}
+
+$debut = ($page - 1) * $nb_elements_par_page;
+// Nombre de pages à afficher avant et après la page courante
+$pagesAffiche = 1;
+// Calcul du début et de la fin de la plage de pages à afficher
+$startPage = max(1, $page - $pagesAffiche);
+$endPage = min($pages, $page + $pagesAffiche);
+
+$select = $connexion->prepare("SELECT Nom_Image FROM images WHERE Id_Image IN (SELECT Id_Image FROM partenaire ) LIMIT $debut, $nb_elements_par_page");
+$select->setFetchMode(PDO::FETCH_ASSOC);
+$select->execute();
+$tab = $select->fetchAll();
+
+$imgPartenaire = $connexion->prepare("SELECT Nom_Image FROM images WHERE Id_Image in (SELECT Id_Image FROM partenaire) LIMIT $debut , $nb_elements_par_page");
+$imgPartenaire->execute();
+$nomImgPartenaire = $imgPartenaire->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +73,7 @@ $idPartenaire = $req->fetchAll();
             <nav>
                 <div class="logo"><img src="assets/logo_st_vincent_1.png" alt="logo_st_vincent"></div>
                 <ul>
-                    <a href="base.php">
+                    <a href="index.php">
                         <li>
                             Accueil
                         </li>
@@ -62,13 +104,15 @@ $idPartenaire = $req->fetchAll();
                 <?php } ?>
             </div>
             <div class="pagination">
-                <span class="page"><</span>
-                <span class="page activepage">1</span>
-                <span class="page">2</span>
-                <span class="page">3</span>
-                <span class="etc">...</span>
-                <span class="page">5</span>
-                <span class="page">></span>
+                <?php
+                for ($i = 1; $i <= $pages; $i++) {
+                    if ($page != $i) {
+                ?>
+                    <a href="?page=<?= $i ?>"> <span class="page"><?= $i ?></span></a>
+                <?php } else { ?>
+                    <a href="?page=<?= $i ?>"> <span class="page activepage"><?= $i ?></span></a>
+                <?php }
+                } ?>
             </div>
         </div>
     </main>
@@ -88,7 +132,7 @@ $idPartenaire = $req->fetchAll();
         $imagepartenaire = $reqImage->fetch();
     ?>
 
-        <div id="modalupdatepart" class="modal">
+        <!-- <div id="modalupdatepart" class="modal">
             <div class="modal-content">
                 <span class="closeModif">&times;</span>
                 <div class="formBox">
@@ -100,7 +144,7 @@ $idPartenaire = $req->fetchAll();
                     <a target="_blank" href="<?= $partenaire['Lien_Partenaire'] ?>"><div id="offres_decouvrir">Voir Site du Partenaire</div></a>
                 </div>
             </div>
-        </div>
+        </div> -->
     <?php } ?>
     </body>
 </html>

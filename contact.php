@@ -20,7 +20,7 @@
             <nav>
                 <div class="logo"><img src="assets/logo_st_vincent_1.png" alt="logo_st_vincent"></div>
                 <ul>
-                    <a href="base.php">
+                    <a href="index.php">
                         <li>Accueil</li>
                     </a>
                     <a href="partenariats.php">
