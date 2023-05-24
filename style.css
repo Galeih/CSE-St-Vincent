@@ -253,6 +253,113 @@ aside.left a {
     opacity: 0.9;
 }
 
+/* Infos Offres */
+
+.divImagesOffre{
+    border-radius:20px;
+    position: relative;
+    z-index: 0;
+    display:flex;
+    flex-direction: row;
+    height: 300px;
+    transition: all 0.2s ease-in-out;
+}
+
+.divImagesOffre :hover{
+    filter: blur(0px);
+}
+
+.img_gradient{
+    position: absolute;
+    background: linear-gradient(0deg, rgba(255,255,255,1) 1px, rgba(0,0,0,0) 50%);
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s ease;
+}
+
+.img_gradient:hover{
+   opacity: 0;
+}
+
+.divImagesOffre img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+
+.date_contenu_offre_billetterie {
+    padding-top: 25px;
+}
+
+.back {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+.back :hover {
+    opacity: 0.60;
+}
+
+.img_partenaire {
+    display: flex;
+    justify-content: center;
+    margin: 5vh 0;
+    width: 100%;
+}
+
+.contain_img_partenaire {
+    width: 30%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(27, 49, 104, 0.1);
+}
+
+.contain_img_partenaire h1 {
+    font-size: 20px;
+}
+
+.contain_img_partenaire a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+    padding-bottom: 10%;
+    border-radius: 20px;
+}
+
+
+.contain_img_partenaire img {
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+
+.contain_img_partenaire p {
+    position: absolute;
+    font-size: 20px;
+    font-weight: bold;
+    z-index: 2;
+    color: #000000;
+    display: none;
+}
+
+.contain_img_partenaire img:hover {
+    opacity: 0.25;
+    z-index: 2;
+    transition: 0.2s ease-in-out;
+}
+
+.contain_img_partenaire img:hover + #voirPlus{
+    display: block;
+}
+
+
 /* Partenariats */
 
 .partenaire-container {

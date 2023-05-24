@@ -77,62 +77,49 @@ $tab = $select->fetchAll();
         </div>
     </header>
     <main>
-            <?php require 'include/aside.php' ?>
-            <div class="right_billetterie">
-                <h1>Toutes nos offres</h1>
-                <?php foreach ($tab as $offre) {
+        <?php require 'include/aside.php' ?>
+        <div class="right_billetterie">
+            <h1>Toutes nos offres</h1>
 
-                    $monthsEnglish = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-                    $monthsFrench = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+            <?php foreach ($tab as $offre) {
+                $months = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
 
-                    $datedeb = $offre['Date_Debut_Offre'];
-                    $datefin = $offre['Date_Fin_Offre'];
+                $datedeb = $offre['Date_Debut_Offre'];
+                $datefin = $offre['Date_Fin_Offre'];
 
-                    $datedeb_formattee = date("%d %B %Y", strtotime($datedeb));
-                    $datedeb_formattee = explode(" ", $datedeb_formattee);
-                    for ($i = 0; $i < count($monthsEnglish); $i++) {
-                        if ($datedeb_formattee[1] == $monthsEnglish[$i]) {
-                            $datedeb_formattee[1] = $monthsFrench[$i];
-                        }
-                    }
-                    $datedeb_formattee = implode(" ", $datedeb_formattee);
+                $datedeb_formattee = date("d-m-y", strtotime($datedeb));
+                $datedeb_formattee = explode(" ", $datedeb_formattee);
+                $datedeb_formattee = implode(" ", $datedeb_formattee);
 
-                    $datefin_formattee = date("%d %B %Y", strtotime($datefin));
-                    $datefin_formattee = explode(" ", $datefin_formattee);
-                    for ($i = 0; $i < count($monthsEnglish); $i++) {
-                        if ($datefin_formattee[1] == $monthsEnglish[$i]) {
-                            $datefin_formattee[1] = $monthsFrench[$i];
-                        }
-                    }
-                    $datefin_formattee = implode(" ", $datefin_formattee);
-                ?>
-                    <div class="offre_billetterie">
-                        <div class="offre_billetterie_header">
-                            <span class="tag_offre">OFFRE</span>
-                            <span class="date_offre">Offre valable du <?php echo $datedeb_formattee ?> au <?php echo $datefin_formattee?>.</span>
-                        </div>
-                        <p><?= $offre['Description_Offre'] ?></p>
+                $datefin_formattee = date("d-m-y", strtotime($datefin));
+                $datefin_formattee = explode(" ", $datefin_formattee);
+                $datefin_formattee = implode(" ", $datefin_formattee);
+            ?>
 
-                        <span class="offre_learnmore"><a href="contenu_offre_billetterie.php?id=<?= $offre['Id_Offre'] ?>&pageoffre=<?= $page ?>">EN SAVOIR PLUS <img class="chevron" src="assets/chevron-droit.png" alt="chevron"> </a></span>
-
-                    </div>
-                <?php } ?>
-                <div class="pagination">
-                    <?php
-                    for ($i = 1; $i <= $pages; $i++) {
-                        if ($page != $i) {
-
-
-                    ?>
-                            <a href="?page=<?= $i ?>"> <span class="page"><?= $i ?></span></a>
-                        <?php } else { ?>
-                            <a href="?page=<?= $i ?>"> <span class="page activepage"><?= $i ?></span></a>
-                    <?php }
-                    } ?>
-
+            <div class="offre_billetterie">
+                <div class="offre_billetterie_header">
+                    <span class="tag_offre">OFFRE</span>
+                    <span class="date_offre">Offre valable du <?php echo $datedeb_formattee ?> au <?php echo $datefin_formattee?>.</span>
                 </div>
+                <p><?= $offre['Description_Offre'] ?></p>
+                <span class="offre_learnmore"><a href="infosOffre.php?id=<?= $offre['Id_Offre'] ?>&pageoffre=<?= $page ?>">EN SAVOIR PLUS <img class="chevron" src="assets/chevron-droit.png" alt="chevron"> </a></span>
             </div>
-        </main> 
+
+            <?php } ?>
+
+            <div class="pagination">
+                <?php
+                for ($i = 1; $i <= $pages; $i++) {
+                    if ($page != $i) {
+                ?>
+                    <a href="?page=<?= $i ?>"> <span class="page"><?= $i ?></span></a>
+                <?php } else { ?>
+                    <a href="?page=<?= $i ?>"> <span class="page activepage"><?= $i ?></span></a>
+                <?php }
+                } ?>
+            </div>
+        </div>
+    </main> 
     <?php require 'include/footer.php'?>
 </body>
 

@@ -1,25 +1,25 @@
 <?php
 require 'include/connectionbdd.php';
 
- //Récupération des données de Téléphone
+ //Récupération du numéro de téléphone
 $numtel = $connexion -> prepare('SELECT Num_TEL_Info_Accueil FROM info_accueil');
 $numtel ->execute();
 $phone = $numtel->fetch();
 $phone = $phone['Num_TEL_Info_Accueil'];
 
-//Récpération des données de l'email
+//Récpération de l'email
 $email = $connexion -> prepare('SELECT Email_Info_Accueil FROM info_accueil');
 $email ->execute();
 $adresseEmail = $email->fetch();
 $adresseEmail = $adresseEmail['Email_Info_Accueil'];
 
-//Récupération des données de l'emplacement du bureau du CSE
+//Récupération de la localisation du bureau du CSE
 $place = $connexion -> prepare('SELECT Emplacement_Bureau_Info_Accueil FROM info_accueil');
 $place ->execute();
 $office = $place->fetch();
 $office = $office['Emplacement_Bureau_Info_Accueil'];
 
-//Images partenaires aléatoires sous une limite de 3
+//Images partenaires aléatoires et limité à 3
 $imagepartenaire = $connexion -> prepare("SELECT DISTINCT * FROM images WHERE Id_Image in (SELECT Id_Image FROM partenaire) ORDER BY RAND() LIMIT 3 ");
 $imagepartenaire -> execute();
 $nomImg = $imagepartenaire->fetchAll();
