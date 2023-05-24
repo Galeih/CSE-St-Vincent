@@ -315,7 +315,7 @@ aside.left a {
 }
 
 .etc {
-    color: rgba(0, 0, 0, 0.674) !important;
+    color: rgba(0, 0, 0, 1) !important;
     align-items: end;
     justify-content: center;
     display: flex;
@@ -335,7 +335,7 @@ aside.left a {
 }
 
 
-/*back partenaire*/
+/* back partenaire */
 
 .imgpartview
 {
@@ -343,7 +343,7 @@ aside.left a {
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    max-width: 30%;
+    max-width: 20%;
     padding: 10px 0 10px 0;
 }
 
@@ -351,7 +351,7 @@ aside.left a {
 {
     background-color: green;
     color: #ffffff;
-    border-radius: 12%;
+    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -363,7 +363,7 @@ aside.left a {
 {
     background-color: red;
     color: #ffffff;
-    border-radius: 12%;
+    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
