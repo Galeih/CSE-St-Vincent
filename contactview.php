@@ -18,7 +18,7 @@ $Partenaire = $req->fetchAll();
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link  rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap">
         <link rel="icon" href="assets/sv_logo.png">
-        <title>CSE Saint-Vincent - Back - Contact</title>
+        <title>CSE Saint-Vincent - Back - Partenariats</title>
     </head>
     <body>
         <header>
@@ -51,16 +51,15 @@ $Partenaire = $req->fetchAll();
                 </nav>
             </div>
         </header>
-        <table>
+        <table style="margin: 60px;">
             <thead>
                 <tr>
-                    <th>Nom partenaire</th>	
-                    <th>Déscription partenaire</th>		
-                    <th>Lien site partenaire</th>
-                    <th>Id image</th>
-                    <th>Image</th>
-                    <th>modifier un partenaire</th>
-                    <th>Supprimmer un partenaire</th>
+                    <th style="width: 10%;border: black solid 5px;">Nom partenaire</th>	
+                    <th style="width: 30%;border: black solid 5px;">Description partenaire</th>		
+                    <th style="border: black solid 5px;">Lien site partenaire</th>
+                    <th style="width: 20%;border: black solid 5px;">Image</th>
+                    <th style="width: 10%;border: black solid 5px;">Modifier partenaire</th>
+                    <th style="width: 10%;border: black solid 5px;">Supprimer partenaire</th>
                 </tr>
             </thead>
             <tbody>
@@ -71,22 +70,23 @@ $Partenaire = $req->fetchAll();
                     $imagepartenaire->execute();
                     $nomImgPartenaire = $imagepartenaire->fetch();
                 ?>
-                <tr>
-                    <td><p class="imgpartview"><?= $part['Nom_Partenaire'] ?></p></td>
-                    <td><p><?= $part['Description_Partenaire'] ?></td>
+                <tr style="text-align: justify; width: 130px;">
+                    <td><p class="partform"><?= $part['Nom_Partenaire'] ?></p></td>
+                    <td><p style="padding: 10px;"><?= $part['Description_Partenaire'] ?></p></td>
                     <td><a class="imgpartview" href="<?= $part['Lien_Partenaire'] ?>"><?= $part['Lien_Partenaire'] ?></a></td>
-                    <td><p class="imgpartview"><?= $part['Id_Image'] ?></p></td>
                     <td><img class="imgpartview" src="assets/<?= $nomImgPartenaire['Nom_Image'] ?>"></td>
                     <td>
                         <a class="upPart" href="updatepart.php?id=<?= $part['Id_Partenaire'] ?>">modifier</a>
                     </td>
                     <td>
-                        <a class="delPart" href="Delpartenaire.php?id=<?= $part['Id_Partenaire'] ?>">supprimmer</a>
+                        <a class="delPart" href="Delpartenaire.php?id=<?= $part['Id_Partenaire'] ?>">supprimer</a>
                     </td>
                 </tr>
                     <?php } ?>
             </tbody>
         </table>
-        <a class="adPart" href="partajt.php">Ajouter un parteanire</a>
+        <div style="display: flex; justify-content: center; padding: 10px;">
+            <a class="adPart" href="partajt.php" style="padding: 10px; border-radius: 10px;">Ajouter partenaire</a>
+        </div>
     </body>
 </html>
