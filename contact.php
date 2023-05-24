@@ -123,12 +123,12 @@ $listDePartenaire = $listDePartenaire->fetchAll();
                         <div class="PackNom">
 
                             <div>
-                                <label for="nom">Nom</label>
+                                <label for="nom">Nom <span style="color: red;">*</span></label>
                                 <?= isset($erreurs['nom']) ? $erreurs['nom'] : null; ?>
                                 <input type="text" name="nom" value="<?= isset($_POST['nom']) ? $_POST['nom'] : null; ?>" placeholder="Nom">
                             </div>
                             <div>
-                                <label for="prenom">Prénom</label>
+                                <label for="prenom">Prénom <span style="color: red;">*</span></label>
                                 <?= isset($erreurs['prenom']) ? $erreurs['prenom'] : null; ?>
                                 <input type="text" name="prenom" value="<?= isset($_POST['prenom']) ? $_POST['prenom'] : null; ?>" placeholder="Prénom">
                             </div>
@@ -138,11 +138,11 @@ $listDePartenaire = $listDePartenaire->fetchAll();
                         <input type="email" name="email" value="<?= isset($_POST['email']) ? $_POST['email'] : null; ?>" placeholder="Adresse Email">
                         <div class="PackNom">
                             <div>
-                                <label for="partenaire">Partenaire Associée</label>
+                                <label for="partenaire">Partenaire <span style="color: red;">*</span></label>
                                 <?= isset($erreurs['partenaire']) ? $erreurs['partenaire'] : null; ?>
 
                                 <select name="partenaire" id="selectPart" onchange="SelectNomPart(value)">
-                                    <option selected value="vide">Aucun partenaire reconnus</option>
+                                    <option selected value="vide">Aucun partenaire selectionné</option>
                                     <?php foreach ($listDePartenaire as $partenaire) {
                                     ?>
                                         <option value="<?= $partenaire['Id_Partenaire'] ?>"><?= $partenaire['Nom_Partenaire'] ?></option>

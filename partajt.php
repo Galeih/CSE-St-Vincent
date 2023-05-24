@@ -139,6 +139,7 @@ if (empty($_GET) === false) {
                     <input type="submit" name="validation">
                 </div>
             </form>
+            <a href="partview.php">Retour</a>
         </main>
 
     </body>
