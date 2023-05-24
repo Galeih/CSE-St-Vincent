@@ -35,12 +35,12 @@ $Partenaire = $req->fetchAll();
                             </li>
                         </a>
                         <a href="partview.php">
-                            <li>
+                            <li class="active">
                                 Back-Partenariats
                             </li>
                         </a>
                         <a href="billetterieview.php">
-                            <li class="active">
+                            <li>
                                 Back-Billetterie
                             </li>
                         </a>
@@ -83,7 +83,7 @@ $Partenaire = $req->fetchAll();
                         <a class="upPart" href="updatepart.php?id=<?= $part['Id_Partenaire'] ?>">modifier</a>
                     </td>
                     <td>
-                        <a class="delPart" href="Delpart.php?id=<?= $part['Id_Partenaire'] ?>">supprimmer</a>
+                        <a class="delPart" href="Delpartenaire.php?id=<?= $part['Id_Partenaire'] ?>">supprimmer</a>
                     </td>
                 </tr>
                     <?php } ?>
