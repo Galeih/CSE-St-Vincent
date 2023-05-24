@@ -29,7 +29,7 @@
                                 Back-Partenariats
                             </li>
                         </a>
-                        <a href="billetterieview.php">
+                        <a href="offreview.php">
                             <li>
                                 Back-Billetterie
                             </li>

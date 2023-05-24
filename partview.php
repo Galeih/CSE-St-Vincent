@@ -13,7 +13,6 @@ $Partenaire = $req->fetchAll();
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="stylePartenariats.css">
         <link rel="stylesheet" href="style.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,8 +22,7 @@ $Partenaire = $req->fetchAll();
     </head>
     <body>
         <header>
-            <div class="light-gray">
-            </div>
+            <div class="light-gray"></div>
             <div class="blue">
                 <nav>
                     <div class="logo"><img src="assets/logo_st_vincent_1.png" alt="logo_st_vincent"></div>
@@ -39,7 +37,7 @@ $Partenaire = $req->fetchAll();
                                 Back-Partenariats
                             </li>
                         </a>
-                        <a href="billetterieview.php">
+                        <a href="offreview.php">
                             <li>
                                 Back-Billetterie
                             </li>

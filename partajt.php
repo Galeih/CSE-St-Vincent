@@ -83,7 +83,7 @@ if (empty($_GET) === false) {
                     <div class="logo"><img src="assets/logo_st_vincent_1.png" alt="logo_st_vincent"></div>
                     <ul>
                     <a href="back.php">
-                            <li class="active">
+                            <li>
                                 Back-Accueil
                             </li>
                         </a>
@@ -106,36 +106,40 @@ if (empty($_GET) === false) {
                 </nav>
             </div>
         </header>
+
         <main>
-            <form id="formulaire_ajt" action="partajt.php" method="GET">
-                <div>
+            <form id="formulaire_ajt" action="partajt.php" method="GET" class=""
+            style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; border-radius: 5px; border: 1px solid #a39677">
+                <div style="padding: 10px;">
                     <label for="nom">Nom :</label>
                     <input type="text" name="nom" value="<?= isset($_GET['nom']) ? $_GET['nom'] : null; ?>">
                     <?= isset($erreurs['nom']) ? $erreurs['nom'] : null; ?>
                 </div>
 
-                <div>
+                <div style="padding: 10px;">
                     <label for="description">Description :</label>
-                    <input type="text" name="description" value="<?= isset($_GET['description']) ? $_GET['description'] : null; ?>">
+                    <textarea name="description" value="<?= isset($_GET['description']) ? $_GET['description'] : null; ?>">
                     <?= isset($erreurs['description']) ? $erreurs['description'] : null; ?>
+                    </textarea>
                 </div>
 
-                <div>
+                <div style="padding: 10px;">
                     <label for="lien">Lien :</label>
                     <input type="text" name="lien" value="<?= isset($_GET['lien']) ? $_GET['lien'] : null; ?>">
                     <?= isset($erreurs['lien']) ? $erreurs['lien'] : null; ?>
                 </div>
 
-                <div>
+                <div style="padding: 10px;">
                     <label for="image">Image :</label>
-                    <input type="text" name="image" value="<?= isset($_GET['image']) ? $_GET['image'] : null; ?>">
+                    <input type="file" name="image" value="<?= isset($_GET['image']) ? $_GET['image'] : null; ?>">
                     <?= isset($erreurs['image']) ? $erreurs['image'] : null; ?>
                 </div>
 
-                <div>
+                <div style="padding: 10px;">
                     <input type="submit" name="validation">
                 </div>
             </form>
         </main>
+
     </body>
 </html>
