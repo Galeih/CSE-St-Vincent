@@ -2,7 +2,7 @@
 require 'include/connectionbdd.php';
 
 if (empty($_GET) === false) {
-    var_dump($_GET);
+    // var_dump($_GET);
     $erreurs = [];
 	if (empty($_GET['dateDebut'])) {
 		$erreurs['dateDebut'] = 'Veuillez saisir un Date_Debut_Offre.';
@@ -33,13 +33,15 @@ if (empty($_GET) === false) {
     if (empty($erreurs)) {
 
         try {
-            $idImg =  $connexion->lastInsertId();
-            $requeteInsertion = $connexion->prepare('INSERT INTO offre (Nom_Offre, Description_Offre, Date_Debut_Offre, Date_Fin_Offre, Nombre_Place_Min_Offre) VALUES (:Nom_Offre, :Description_Offre, :Date_Debut_Offre, :Date_Fin_Offre, :Nombre_Place_Min_Offre)');
-            $requeteInsertion->bindParam('Nom_Partenaire', $_GET['nom']);
+            $idPart =  $connexion->lastInsertId();
+            $requeteInsertion = $connexion->prepare('INSERT INTO offre (Nom_Offre, Description_Offre, Date_Debut_Offre, Date_Fin_Offre, Nombre_Place_Min_Offre, Id_Partenaire) VALUES (:Nom_Offre, :Description_Offre, :Date_Debut_Offre, :Date_Fin_Offre, :Nombre_Place_Min_Offre, :idpart)');
+            $requeteInsertion->bindParam('Nom_Offre', $_GET['nom']);
             $requeteInsertion->bindParam('Description_Offre', $_GET['description']);
             $requeteInsertion->bindParam('Date_Debut_Offre', $_GET['dateDebut']);
             $requeteInsertion->bindParam('Date_Fin_Offre', $_GET['dateFin']);
             $requeteInsertion->bindParam('Nombre_Place_Min_Offre', $_GET['nbMinPlace']);
+            $requeteInsertion->bindParam('idpart', $idPart);
+            var_dump($idPart);
 
             $requeteInsertion->execute();
 
@@ -68,12 +70,11 @@ if (empty($_GET) === false) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link  rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap">
         <link rel="icon" href="assets/sv_logo.png">
-        <title>CSE Saint-Vincent - Back - AjouterPartenaire</title>
+        <title>CSE Saint-Vincent - Back - AjouterOffre</title>
     </head>
     <body>
         <header>
-            <div class="light-gray">
-            </div>
+            <div class="light-gray"></div>
             <div class="blue">
                 <nav>
                     <div class="logo"><img src="assets/logo_st_vincent_1.png" alt="logo_st_vincent"></div>
@@ -104,7 +105,7 @@ if (empty($_GET) === false) {
         </header>
 
         <main>
-            <form id="formulaire_ajt" action="offreajt.php" method="GET" class=""
+            <form id="formulaire_ajt" action="offreajt.php" method="GET"
             style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; border-radius: 5px; border: 1px solid #a39677">
                 <div style="padding: 10px;">
                     <label for="nom">Nom :</label>
