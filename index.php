@@ -34,6 +34,7 @@ $TexteAccueil = $texteInfoAccueil -> fetch();
 $TexteAccueil = $TexteAccueil['Texte_Info_Accueil'];
 
 
+
 $offres = $connexion -> prepare("SELECT DISTINCT * FROM offre ORDER BY Id_Offre DESC LIMIT 3");
 $offres -> execute();
 $chaqueOffre = $offres -> fetchAll();
