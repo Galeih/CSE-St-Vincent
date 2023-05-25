@@ -220,7 +220,7 @@ aside.left a {
     line-height: 17px;
 }
 
-.offre_learnmore {
+.learnmore {
     width: fit-content;
     display: block;
     text-align: end;
@@ -232,9 +232,10 @@ aside.left a {
     margin-top: 10px;
     text-decoration: none !important;
 }
-.offre_learnmore:hover {
+.learnmore:hover {
     color: #a39677;
     scale: 1.05;
+    font-size: 16px;
 }
 
 #offres_decouvrir {

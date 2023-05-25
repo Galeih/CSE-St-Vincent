@@ -11,7 +11,7 @@ if (empty($_GET) || empty($_GET['id'])) {
 $selectOffre = $connexion->prepare('SELECT * FROM offre WHERE Id_Offre = :id;');
 $selectOffre->bindParam(':id', $_GET['id']);
 $selectOffre->execute();
-$DescOffres = $selectOffre->fetch(PDO::FETCH_ASSOC);
+$DescOffre = $selectOffre->fetch(PDO::FETCH_ASSOC);
 
 //Selection du nom de l'image par rapport a l'id de l'offre pour le partenaire
 $imgContenuBilletterie = $connexion->prepare("SELECT images.Nom_Image, images.Id_Image FROM images INNER JOIN partenaire ON images.Id_Image = partenaire.Id_Image INNER JOIN offre ON partenaire.Id_Partenaire = offre.Id_Partenaire WHERE offre.Id_Offre = :id");
@@ -35,16 +35,16 @@ $imgPourContenu = $imgPourContenu->fetchAll();
 //Changement des mois d'anglais en français
 $months = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
 
-    $datedeb = $DescOffres['Date_Debut_Offre'];
-    $datefin = $DescOffres['Date_Fin_Offre'];
+    $datedeb = $DescOffre['Date_Debut_Offre'];
+    $datefin = $DescOffre['Date_Fin_Offre'];
 
-    $datedeb_formattee = date("d-m-y", strtotime($datedeb));
-    $datedeb_formattee = explode(" ", $datedeb_formattee);
-    $datedeb_formattee = implode(" ", $datedeb_formattee);
+    $datedeb_ind = date("d-m-y", strtotime($datedeb));
+    $datedeb_ind = explode(" ", $datedeb_ind);
+    $datedeb_ind = implode(" ", $datedeb_ind);
 
-    $datefin_formattee = date("d-m-y", strtotime($datefin));
-    $datefin_formattee = explode(" ", $datefin_formattee);
-    $datefin_formattee = implode(" ", $datefin_formattee);
+    $datefin_ind = date("d-m-y", strtotime($datefin));
+    $datefin_ind = explode(" ", $datefin_ind);
+    $datefin_ind = implode(" ", $datefin_ind);
 
 ?>
 
@@ -56,12 +56,10 @@ $months = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'ao
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
     <link rel="icon" href="assets/sv_logo.png">
-    <title>CSE Saint-Vincent - <?= $DescOffres['Nom_Offre'] ?></title>
+    <title>CSE Saint-Vincent - <?= $DescOffre['Nom_Offre'] ?></title>
 </head>
 
 <body id="body" class="no-transition">
@@ -92,6 +90,7 @@ $months = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'ao
     </header>
         <main>
             <?php require 'include/aside.php' ?>
+
             <div class="right">
                 <?php if (count($imgPourContenu) > 0) { ?>
                     <div class="divImagesOffre">
@@ -102,30 +101,31 @@ $months = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'ao
                         </div>
                     </div>
                 <?php } ?>
-                <h1><?= $DescOffres['Nom_Offre'] ?></h1>
+                <h1><?= $DescOffre['Nom_Offre'] ?></h1>
                 <div class="Description_Offre">
                     <p>
-                        <?= $DescOffres['Description_Offre'] ?>
+                        <?= $DescOffre['Description_Offre'] ?>
                     </p>
                 </div>
-                <div class="date_contenu_offre_billetterie">
-                    <span class="date_contenu_offre">Offre valable du <?php echo $datedeb_formattee ?> au <?php echo $datefin_formattee ?>.</span>
+                <div class="date_offre">
+                    <span class="date_offre">Offre valable du <?php echo $datedeb_ind ?> au <?php echo $datefin_ind ?>.</span>
                 </div><div class="img_partenaire">
                         <div class="contain_img_partenaire">
                             <h1>Partenaire</h1>
-                            <a href="partenariats.php?modalOuvirPartenaire=<?php echo $link['Id_Partenaire'] ?>">
-                                
+                            <a href="partenariats.php">
                                 <img src="<?php echo "assets/" . $imgContenu['Nom_Image'] . "" ?>" alt="Image du partenaire">
                                 <p id="voirPlus">Voir plus</p>
                             </a>
                         </div>
                     </div>
                 <div class="back">
-                    <a href="billetterie.php?anciennepage=<?= isset($_GET['pageoffre']) ? $_GET['pageoffre'] : 1 ?>"><img src="assets/chevron-droit.png" class="chevron" alt="chevron">Retour</a>
+                    <a href="billetterie.php"><img src="assets/chevron-droit.png" class="chevron" alt="chevron">Retour</a>
                 </div>
             </div>
         </main>
+
         <?php require 'include/footer.php' ?>
+        
     </div>
 </body>
 

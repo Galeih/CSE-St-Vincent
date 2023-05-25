@@ -84,7 +84,7 @@ $TexteAccueil = $TexteAccueil['Texte_Info_Accueil'];
                 <nav>
                     <div class="logo"><img src="assets/logo_st_vincent_1.png" alt="logo_st_vincent"></div>
                     <ul>
-                    <a href="updateaccueil.php">
+                    <a href="back.php">
                             <li>
                                 Back-Accueil
                             </li>
@@ -118,26 +118,26 @@ $TexteAccueil = $TexteAccueil['Texte_Info_Accueil'];
           <div class="sous-titre-modif">
             <label class="sous-titre-modif" for="titre">Titre : </label>
             <?= isset($erreurs['titre']) ? $erreurs['titre'] : null; ?>
-            <input class="info-modif" type="text" name="titre" value="<?= $TitreAccueil ?>">
+            <input class="titre-modif" type="text" name="titre" value="<?= $TitreAccueil ?>">
           </div> 
           <div class="sous-titre-modif">
             <label for="description">Description : </label>
-            <input class="info-modif"type="text" name="description" value=" <?= $TexteAccueil ?>">
+            <input class="texte-modif" type="text" name="description" value=" <?= $TexteAccueil ?>">
             <?= isset($erreurs['description']) ? $erreurs['description'] : null; ?>
           </div>   
           <div class="sous-titre-modif">
             <label for="email">Email : </label>
-            <input class="info-modif" type="text" name="email" value="<?= $adresseEmail ?>">
+            <input class="email-modif" type="text" name="email" value="<?= $adresseEmail ?>">
             <?= isset($erreurs['email']) ? $erreurs['email'] : null; ?>
           </div> 
           <div class="sous-titre-modif">  
             <label for="telephone">Téléphone : </label>
-            <input class="info-modif"type="text" name="telephone" value="<?= $phone ?>">
+            <input class="telephone-modif" type="text" name="telephone" value="<?= $phone ?>">
             <?= isset($erreurs['telephone']) ? $erreurs['telephone'] : null; ?>
           </div>
           <div class="sous-titre-modif">  
             <label for="emplacement">Emplacement du bureau de CSE : </label>
-            <input style="align-items: center;" class="info-modif" type="text" name="emplacement" value="<?= $office ?>">
+            <input class="bureau-modif" type="text" name="emplacement" value="<?= $office ?>">
             <?= isset($erreurs['emplacement']) ? $erreurs['emplacement'] : null; ?>
           </div>
           <div> 
@@ -145,6 +145,3 @@ $TexteAccueil = $TexteAccueil['Texte_Info_Accueil'];
           </div>
         </form>
       </div>
-
-    </body>
-  </html>

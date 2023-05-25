@@ -27,7 +27,7 @@ $Billetterie = $req->fetchAll();
                 <nav>
                     <div class="logo"><img src="assets/logo_st_vincent_1.png" alt="logo_st_vincent"></div>
                     <ul>
-                    <a href="updateaccueil.php">
+                    <a href="back.php">
                             <li>
                                 Back-Accueil
                             </li>

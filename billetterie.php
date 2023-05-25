@@ -16,26 +16,15 @@ if (empty($page)) {
 
 $page = max(1, min($pages, $page));
 
-if (isset($_GET["anciennepage"])) {
-    try {
-        $valeur = intval($_GET["anciennepage"]);
-        if (gettype($valeur == "integer")) {
-            $page = $valeur;
-        }
-    } catch (Exception $e) {
-        $page = 1;
-    }
-}
-
 if ($page === 0) {
     $page = 1;
 }
+$start = ($page - 1) * $nb_elements_par_page;
 
-$debut = ($page - 1) * $nb_elements_par_page;
-$select = $connexion->prepare("SELECT * FROM offre ORDER BY Date_Debut_Offre desc LIMIT $debut, $nb_elements_par_page ");
+$select = $connexion->prepare("SELECT * FROM offre ORDER BY Date_Debut_Offre desc LIMIT $start, $nb_elements_par_page ");
 $select->setFetchMode(PDO::FETCH_ASSOC);
 $select->execute();
-$tab = $select->fetchAll();
+$ind = $select->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -84,28 +73,28 @@ $tab = $select->fetchAll();
         <div class="right">
             <h1>Toutes nos offres</h1>
 
-            <?php foreach ($tab as $offre) {
+            <?php foreach ($ind as $offre) {
                 $months = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
 
                 $datedeb = $offre['Date_Debut_Offre'];
                 $datefin = $offre['Date_Fin_Offre'];
 
-                $datedeb_formattee = date("d-m-y", strtotime($datedeb));
-                $datedeb_formattee = explode(" ", $datedeb_formattee);
-                $datedeb_formattee = implode(" ", $datedeb_formattee);
+                $datedeb_ind = date("d-m-y", strtotime($datedeb));
+                $datedeb_ind = explode(" ", $datedeb_ind);
+                $datedeb_ind = implode(" ", $datedeb_ind);
 
-                $datefin_formattee = date("d-m-y", strtotime($datefin));
-                $datefin_formattee = explode(" ", $datefin_formattee);
-                $datefin_formattee = implode(" ", $datefin_formattee);
+                $datefin_ind = date("d-m-y", strtotime($datefin));
+                $datefin_ind = explode(" ", $datefin_ind);
+                $datefin_ind = implode(" ", $datefin_ind);
             ?>
 
             <div class="offre_billetterie">
                 <div class="offre_billetterie_header">
                     <span class="tag_offre">OFFRE</span>
-                    <span class="date_offre">Offre valable du <?php echo $datedeb_formattee ?> au <?php echo $datefin_formattee?>.</span>
+                    <span class="date_offre">Offre valable du <?php echo $datedeb_ind ?> au <?php echo $datefin_ind?>.</span>
                 </div>
                 <p><?= $offre['Description_Offre'] ?></p>
-                <span class="offre_learnmore"><a href="infosOffre.php?id=<?= $offre['Id_Offre'] ?>&pageoffre=<?= $page ?>">EN SAVOIR PLUS <img class="chevron" src="assets/chevron-droit.png" alt="chevron"> </a></span>
+                <span class="learnmore"><a href="infosOffre.php?id=<?= $offre['Id_Offre'] ?>&pageoffre=<?= $page ?>">EN SAVOIR PLUS <img class="chevron" src="assets/chevron-droit.png" alt="chevron"> </a></span>
             </div>
 
             <?php } ?>
