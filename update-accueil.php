@@ -67,9 +67,7 @@ $TexteAccueil = $TexteAccueil['Texte_Info_Accueil'];
  $place ->execute();
  $office = $place->fetch();
  $office = $office['Emplacement_Bureau_Info_Accueil'];
-
 ?>
-
 
 <!DOCTYPE HTML>
 <html>
@@ -111,42 +109,41 @@ $TexteAccueil = $TexteAccueil['Texte_Info_Accueil'];
     </header>
         </header>
 
-
       <body>
-
-        
-      <h1 class="tittre-modif" style="margin-top: 50px;margin-bottom: 20px;">Modification des données de la page d'accueil</h1>
+      <h1 class="titre-modif" style="margin-top: 50px;margin-bottom: 20px;">Modification des données de la page d'accueil</h1>
+      <div class="container-modif">
 
         <form action="#" method="POST" style="display:flex; flex-direction: column; width:25%;">
-        
-             <label for="titre">Titre : </label>
+          <div class="sous-titre-modif">
+            <label class="sous-titre-modif" for="titre">Titre : </label>
             <?= isset($erreurs['titre']) ? $erreurs['titre'] : null; ?>
-            <input type="text" name="titre" value="<?= $TitreAccueil ?>">
-            
+            <input class="titre-modif" type="text" name="titre" value="<?= $TitreAccueil ?>">
+          </div> 
+          <div class="sous-titre-modif">
             <label for="description">Description : </label>
-            <textarea name="description" cols="5" rows="5"><?= $TexteAccueil ?></textarea>
+            <input class="texte-modif" type="text" name="description" value=" <?= $TexteAccueil ?>">
             <?= isset($erreurs['description']) ? $erreurs['description'] : null; ?>
-            
+          </div>   
+          <div class="sous-titre-modif">
             <label for="email">Email : </label>
-            <input type="text" name="email" value="<?= $adresseEmail ?>">
+            <input class="email-modif" type="text" name="email" value="<?= $adresseEmail ?>">
             <?= isset($erreurs['email']) ? $erreurs['email'] : null; ?>
-            
+          </div> 
+          <div class="sous-titre-modif">  
             <label for="telephone">Téléphone : </label>
-            <input type="text" name="telephone" value="<?= $phone ?>">
+            <input class="telephone-modif" type="text" name="telephone" value="<?= $phone ?>">
             <?= isset($erreurs['telephone']) ? $erreurs['telephone'] : null; ?>
-            
+          </div>
+          <div class="sous-titre-modif">  
             <label for="emplacement">Emplacement du bureau de CSE : </label>
-            <input type="text" name="emplacement" value="<?= $office ?>">
+            <input class="bureau-modif" type="text" name="emplacement" value="<?= $office ?>">
             <?= isset($erreurs['emplacement']) ? $erreurs['emplacement'] : null; ?>
-        
-            <input type="submit" value="Modifier">
+          </div>
+          <div> 
+            <input class="sous-titre-input" type="submit" value="Modifier">
+          </div>
         </form>
-
+      </div>
 
     </body>
-
-
-      </body>
-
-
-
+  </html>
