@@ -436,7 +436,7 @@ aside.left a {
     border-radius: 10px;
     padding-left: 5%;
     padding-right: 5%;
-}
+    max-width: 10%;
 .info-modif{
     background-color: #f0f0f0;
     padding-bottom: 20%;
