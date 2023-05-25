@@ -32,7 +32,8 @@ $texteInfoAccueil = $connexion -> prepare('SELECT Texte_Info_Accueil FROM info_a
 $texteInfoAccueil -> execute();
 $TexteAccueil = $texteInfoAccueil -> fetch();
 $TexteAccueil = $TexteAccueil['Texte_Info_Accueil'];
-// Images partenaires
+
+
 $offres = $connexion -> prepare("SELECT DISTINCT * FROM offre ORDER BY Id_Offre DESC LIMIT 3");
 $offres -> execute();
 $chaqueOffre = $offres -> fetchAll();
@@ -88,22 +89,38 @@ $chaqueOffre = $offres -> fetchAll();
             </div>
             <h1>Dernières offres de la Billetterie</h1>
             
-            <?php foreach($chaqueOffre as $offre ){?>
+            
+            <?php foreach($chaqueOffre as $offre ){
+
+                $months = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+
+                $datedeb = $offre['Date_Debut_Offre'];
+                $datefin = $offre['Date_Fin_Offre'];
+
+                $datedeb_ind = date("d-m-y", strtotime($datedeb));
+                $datedeb_ind = explode(" ", $datedeb_ind);
+                $datedeb_ind = implode(" ", $datedeb_ind);
+
+                $datefin_ind = date("d-m-y", strtotime($datefin));
+                $datefin_ind = explode(" ", $datefin_ind);
+                $datefin_ind = implode(" ", $datefin_ind);
+            ?>
+
             <div class="offre_billetterie">
                 <div class="offre_billetterie_header">
                     <span class="tag_offre">OFFRE</span>
-                    <span class="date_offre">Publié le <?php echo date('d F Y',strtotime($offre['Date_Debut_Offre']))?></span>
+                    <span class="date_offre">Offre valable du <?php echo $datedeb_ind ?> au <?php echo $datefin_ind?>.</span>
                 </div>
                 <p><?=$offre['Description_Offre']?></p>
-                    <span class="offre_learnmore">
-                        <a target="blank" href="billetterie.php">EN SAVOIR PLUS
+                    <span class="learnmore">
+                        <a href="billetterie.php">EN SAVOIR PLUS
                             <img class="chevron" src="assets/chevron-droit.png" alt="chevron">
                         </a>
                     </span>
             </div>
             <?php } ?>
 
-            <a target="_blank" href="billetterie.php">
+            <a href="billetterie.php">
                 <span id="offres_decouvrir">Découvrir toutes nos offres</span>
             </a>
         </div>

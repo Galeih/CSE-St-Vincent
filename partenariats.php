@@ -34,15 +34,15 @@ if ($page === 0) {
     $page = 1;
 }
 
-$debut = ($page - 1) * $nb_elements_par_page;
+$start = ($page - 1) * $nb_elements_par_page;
 $pagesAffiche = 1;
 $startPage = max(1, $page - $pagesAffiche);
 $endPage = min($pages, $page + $pagesAffiche);
-$select = $connexion->prepare("SELECT Nom_Image FROM images WHERE Id_Image IN (SELECT Id_Image FROM partenaire ) LIMIT $debut, $nb_elements_par_page");
+$select = $connexion->prepare("SELECT Nom_Image FROM images WHERE Id_Image IN (SELECT Id_Image FROM partenaire ) LIMIT $start, $nb_elements_par_page");
 $select->setFetchMode(PDO::FETCH_ASSOC);
 $select->execute();
 $tab = $select->fetchAll();
-$imgPartenaire = $connexion->prepare("SELECT Nom_Image FROM images WHERE Id_Image in (SELECT Id_Image FROM partenaire) LIMIT $debut , $nb_elements_par_page");
+$imgPartenaire = $connexion->prepare("SELECT Nom_Image FROM images WHERE Id_Image in (SELECT Id_Image FROM partenaire) LIMIT $start , $nb_elements_par_page");
 $imgPartenaire->execute();
 $nomImgPartenaire = $imgPartenaire->fetchAll();
 ?>
