@@ -140,7 +140,7 @@ if(!empty($_POST['Nom_Partenaire']))
                 <nav>
                     <div class="logo"><img src="assets/logo_st_vincent_1.png" alt="logo_st_vincent"></div>
                     <ul>
-                    <a href="back.php">
+                    <a href="updateaccueil.php">
                             <li>
                                 Back-Accueil
                             </li>
@@ -150,7 +150,7 @@ if(!empty($_POST['Nom_Partenaire']))
                                 Back-Partenariats
                             </li>
                         </a>
-                        <a href="billetterieview.php">
+                        <a href="offreview.php">
                             <li>
                                 Back-Billetterie
                             </li>

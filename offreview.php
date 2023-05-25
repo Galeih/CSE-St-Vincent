@@ -27,7 +27,7 @@ $Billetterie = $req->fetchAll();
                 <nav>
                     <div class="logo"><img src="assets/logo_st_vincent_1.png" alt="logo_st_vincent"></div>
                     <ul>
-                    <a href="back.php">
+                    <a href="updateaccueil.php">
                             <li>
                                 Back-Accueil
                             </li>
@@ -67,11 +67,11 @@ $Billetterie = $req->fetchAll();
             <?php foreach ($Billetterie as $offer) {?>
                 
                 <tr style="text-align: justify; width: 130px;">
-                    <td><p class="partform"><?= $offer['Nom_Offre'] ?></p></td>
+                    <td><p style="padding: 10px;" class="partform"><?= $offer['Nom_Offre'] ?></p></td>
                     <td><p style="padding: 10px;"><?= $offer['Description_Offre'] ?></p></td>
-                    <td><p><?= $offer['Date_Debut_Offre'] ?></p></td>
-                    <td><p><?= $offer['Date_Fin_Offre'] ?></p></td>
-                    <td><p><?= $offer['Nombre_Place_Min_Offre'] ?></p></td>
+                    <td><p style="padding: 10px;"><?= $offer['Date_Debut_Offre'] ?></p></td>
+                    <td><p style="padding: 10px;"><?= $offer['Date_Fin_Offre'] ?></p></td>
+                    <td><p style="padding: 10px;"><?= $offer['Nombre_Place_Min_Offre'] ?></p></td>
 
                     <td>
                         <a class="upPart" href="updatebillet.php?id=<?= $offer['Id_Offre'] ?>">modifier</a>

@@ -19,7 +19,7 @@
                 <nav>
                     <div class="logo"><img src="assets/logo_st_vincent_1.png" alt="logo_st_vincent"></div>
                     <ul>
-                        <a href="back.php">
+                        <a href="update-accueil.php">
                             <li class="active">
                                 Back-Accueil
                             </li>

@@ -333,6 +333,50 @@ aside.left a {
     flex-direction: column;
     width: 100%;
 }
+/* Formulaire de contact*/
+
+.contact-titre{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5% 0% 5% 0%;
+}
+
+.contact-info{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 5%;
+}
+.contact-info input{
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    padding: 1%;
+}
+.contact-info select{
+    border-radius: 5px;
+    background-color: #f0f0f0;
+}
+.contact-info textarea{
+    border-radius: 5px;
+    background-color: #f0f0f0;
+}
+.soumettre input{
+    background-color:#1B3168 ;
+    color: white;
+}
+.soumettre input:hover{
+    background-color:#233f87 ;
+    color: white;
+}
+.success{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
 
 /* back accueil */
 
@@ -469,5 +513,11 @@ aside.left a {
     margin-left: 35%;
     margin-top: 10%;
     background-color: #1B3168;
+
+}
+
+td{
+    border:solid black;
+    border-width: 2px;
 
 }

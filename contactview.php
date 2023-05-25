@@ -1,9 +1,9 @@
 <?php
 require 'include/connectionbdd.php';
 
-$req = $connexion->prepare("SELECT * FROM partenaire");
+$req = $connexion->prepare("SELECT * FROM message");
 $req->execute();
-$Partenaire = $req->fetchAll();
+$Contact = $req->fetchAll();
 
 ?>
 
@@ -18,7 +18,7 @@ $Partenaire = $req->fetchAll();
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link  rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap">
         <link rel="icon" href="assets/sv_logo.png">
-        <title>CSE Saint-Vincent - Back - Partenariats</title>
+        <title>CSE Saint-Vincent - Back - Messagerie</title>
     </head>
     <body>
         <header>
@@ -27,7 +27,7 @@ $Partenaire = $req->fetchAll();
                 <nav>
                     <div class="logo"><img src="assets/logo_st_vincent_1.png" alt="logo_st_vincent"></div>
                     <ul>
-                    <a href="back.php">
+                    <a href="updateaccueil.php">
                             <li>
                                 Back-Accueil
                             </li>
@@ -54,39 +54,26 @@ $Partenaire = $req->fetchAll();
         <table style="margin: 60px;">
             <thead>
                 <tr>
-                    <th style="width: 10%;border: black solid 5px;">Nom partenaire</th>	
-                    <th style="width: 30%;border: black solid 5px;">Description partenaire</th>		
-                    <th style="border: black solid 5px;">Lien site partenaire</th>
-                    <th style="width: 20%;border: black solid 5px;">Image</th>
-                    <th style="width: 10%;border: black solid 5px;">Modifier partenaire</th>
+                    <th style="width: 10%;border: black solid 5px;">Nom utilisateur</th>	
+                    <th style="width: 30%;border: black solid 5px;">Prénom utilisateur</th>		
+                    <th style="border: black solid 5px;">Adresse mail utilisateur</th>
+                    <th style="width: 20%;border: black solid 5px;">Contenu message</th>
                     <th style="width: 10%;border: black solid 5px;">Supprimer partenaire</th>
                 </tr>
             </thead>
             <tbody>
-            <?php
-                foreach ($Partenaire as $part) {
-                    $imagepartenaire = $connexion->prepare("SELECT Nom_Image FROM images WHERE Id_Image = :id");
-                    $imagepartenaire->bindParam("id",$part['Id_Image']);
-                    $imagepartenaire->execute();
-                    $nomImgPartenaire = $imagepartenaire->fetch();
-                ?>
+            <?php foreach ($Contact as $cont) {?>
                 <tr style="text-align: justify; width: 130px;">
-                    <td><p class="partform"><?= $part['Nom_Partenaire'] ?></p></td>
-                    <td><p style="padding: 10px;"><?= $part['Description_Partenaire'] ?></p></td>
-                    <td><a class="imgpartview" href="<?= $part['Lien_Partenaire'] ?>"><?= $part['Lien_Partenaire'] ?></a></td>
-                    <td><img class="imgpartview" src="assets/<?= $nomImgPartenaire['Nom_Image'] ?>"></td>
+                <td><p class="partform" style="padding: 10px;"><?= $cont['Nom_Message'] ?></p></td>
+                    <td><p style="padding: 10px;"><?= $cont['Prenom_Message'] ?></p></td>
+                    <td><p style="padding: 10px;"><?= $cont['Email_Message'] ?></p></td>
+                    <td><p style="padding: 10px;"><?= $cont['Contenu_Message'] ?></p></td>
                     <td>
-                        <a class="upPart" href="updatepart.php?id=<?= $part['Id_Partenaire'] ?>">modifier</a>
-                    </td>
-                    <td>
-                        <a class="delPart" href="Delpartenaire.php?id=<?= $part['Id_Partenaire'] ?>">supprimer</a>
+                        <a class="delPart" style="margin: 5px 0px 5px 0px" href="delmessage.php?id=<?= $cont['Id_Message'] ?>">supprimer</a>
                     </td>
                 </tr>
                     <?php } ?>
             </tbody>
         </table>
-        <div style="display: flex; justify-content: center; padding: 10px;">
-            <a class="adPart" href="partajt.php" style="padding: 10px; border-radius: 10px;">Ajouter partenaire</a>
-        </div>
     </body>
 </html>

@@ -114,7 +114,7 @@ $listDePartenaire = $listDePartenaire->fetchAll();
     <main>
         <?php require 'include/aside.php' ?>
         <div class="right">
-            <h1>Contactez-nous :</h1>
+            <h1 class="contact-titre">Contactez-nous :</h1>
 
             <section class="contact">
                 <div class="contactForm">
@@ -122,41 +122,33 @@ $listDePartenaire = $listDePartenaire->fetchAll();
                     <form action="#" method="POST">
                         <div class="PackNom">
 
-                            <div>
-                                <label for="nom">Nom <span style="color: red;">*</span></label>
+                            <div class="contact-info">
+                                <label for="nom">Nom : <span style="color: red;">*</span></label>
                                 <?= isset($erreurs['nom']) ? $erreurs['nom'] : null; ?>
                                 <input type="text" name="nom" value="<?= isset($_POST['nom']) ? $_POST['nom'] : null; ?>" placeholder="Nom">
                             </div>
-                            <div>
-                                <label for="prenom">Prénom <span style="color: red;">*</span></label>
+                            <div class="contact-info">
+                                <label for="prenom">Prénom : <span style="color: red;">*</span></label>
                                 <?= isset($erreurs['prenom']) ? $erreurs['prenom'] : null; ?>
                                 <input type="text" name="prenom" value="<?= isset($_POST['prenom']) ? $_POST['prenom'] : null; ?>" placeholder="Prénom">
                             </div>
                         </div>
-                        <label for="email">Email <span style="color: red;">*</span></label>
-                        <?= isset($erreurs['email']) ? $erreurs['email'] : null; ?>
-                        <input type="email" name="email" value="<?= isset($_POST['email']) ? $_POST['email'] : null; ?>" placeholder="Adresse Email">
-                        <div class="PackNom">
-                            <div>
-                                <label for="partenaire">Partenaire <span style="color: red;">*</span></label>
-                                <?= isset($erreurs['partenaire']) ? $erreurs['partenaire'] : null; ?>
-
-                                <select name="partenaire" id="selectPart" onchange="SelectNomPart(value)">
-                                    <option selected value="vide">Aucun partenaire selectionné</option>
-                                    <?php foreach ($listDePartenaire as $partenaire) {
-                                    ?>
-                                        <option value="<?= $partenaire['Id_Partenaire'] ?>"><?= $partenaire['Nom_Partenaire'] ?></option>
-                                    <?php
-                                    } ?>
-                                </select>
-                            </div>
+                        <div class="contact-info">
+                            <label for="email">Email : <span style="color: red;">*</span></label>
+                            <?= isset($erreurs['email']) ? $erreurs['email'] : null; ?>
+                            <input type="email" name="email" value="<?= isset($_POST['email']) ? $_POST['email'] : null; ?>" placeholder="Adresse Email">
                         </div>
-                        <label for="contenu">Contenu <span style="color: red;">*</span></label>
-                        <?= isset($erreurs['contenu']) ? $erreurs['contenu'] : null; ?>
-                        <textarea name="contenu" placeholder="Votre message"><?= isset($_POST['contenu']) ? $_POST['contenu'] : null; ?></textarea>
+                        </div>
+                        <div class="contact-info">
+                            <label for="contenu">Contenu : <span style="color: red;">*</span></label>
+                            <?= isset($erreurs['contenu']) ? $erreurs['contenu'] : null; ?>
+                            <textarea name="contenu" placeholder="Votre message"><?= isset($_POST['contenu']) ? $_POST['contenu'] : null; ?></textarea>
+                        </div>
+                        <div class="contact-info">  
+                            <div class="cf-turnstile" data-sitekey="0x4AAAAAAAEgyIjb34yA_KXM" data-callback="javascriptCallback"></div>
+                        </div>
 
-                        <div class="cf-turnstile" data-sitekey="0x4AAAAAAAEgyIjb34yA_KXM" data-callback="javascriptCallback"></div>
-                        <div class="soumettre" style="margin-bottom: 1px;">
+                        <div class="soumettre contact-info" style="margin-bottom: 1px;">
                             <input type="submit" name="validation" value="Soumettre">
                         </div>
 

@@ -27,7 +27,7 @@ $Partenaire = $req->fetchAll();
                 <nav>
                     <div class="logo"><img src="assets/logo_st_vincent_1.png" alt="logo_st_vincent"></div>
                     <ul>
-                    <a href="back.php">
+                    <a href="updateaccueil.php">
                             <li>
                                 Back-Accueil
                             </li>
@@ -54,12 +54,12 @@ $Partenaire = $req->fetchAll();
         <table style="margin: 60px;">
             <thead>
                 <tr>
-                    <th style="width: 10%;border: black solid 5px;">Nom partenaire</th>	
+                    <th  style="width: 10%;border: black solid 5px;">Nom partenaire</th>	
                     <th style="width: 30%;border: black solid 5px;">Description partenaire</th>		
                     <th style="border: black solid 5px;">Lien site partenaire</th>
-                    <th style="width: 20%;border: black solid 5px;">Image</th>
-                    <th style="width: 10%;border: black solid 5px;">Modifier partenaire</th>
-                    <th style="width: 10%;border: black solid 5px;">Supprimer partenaire</th>
+                    <th style="border: black solid 5px;">Image</th>
+                    <th style="border: black solid 5px;">Modifier partenaire</th>
+                    <th style="border: black solid 5px;">Supprimer partenaire</th>
                 </tr>
             </thead>
             <tbody>
@@ -70,7 +70,7 @@ $Partenaire = $req->fetchAll();
                     $imagepartenaire->execute();
                     $nomImgPartenaire = $imagepartenaire->fetch();
                 ?>
-                <tr style="text-align: justify; width: 130px;">
+                <tr class="partview-contenu" style="text-align: justify; width: 130px;">
                     <td><p class="partform"><?= $part['Nom_Partenaire'] ?></p></td>
                     <td><p style="padding: 10px;"><?= $part['Description_Partenaire'] ?></p></td>
                     <td><a class="imgpartview" href="<?= $part['Lien_Partenaire'] ?>"><?= $part['Lien_Partenaire'] ?></a></td>
